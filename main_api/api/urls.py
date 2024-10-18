@@ -4,8 +4,8 @@ from . import views
 
 router = SimpleRouter()
 
-router.register(r"sample-endpoint", views.SampleViewSet, basename="sample-endpoint")
-
 appname = "api"
 
-urlpatterns = router.urls
+urlpatterns = router.urls + [
+    path("loan-predict/", views.LoansPredictionView.as_view(), name="loan-predict")
+]
