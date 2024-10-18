@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: bash -c "./init.sh"
+    container_name: collabothon-api
+    volumes:
+      - .:/api
+    ports:
+      - "8000:8000"
