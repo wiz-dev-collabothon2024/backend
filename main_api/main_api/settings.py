@@ -99,4 +99,5 @@ SWAGGER_SETTINGS = {
             'in': 'header'
         }
     },
+    'DEFAULT_INFO': 'users.swagger_info.swagger_info'
 }

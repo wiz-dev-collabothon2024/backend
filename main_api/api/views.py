@@ -8,6 +8,15 @@ from drf_yasg import openapi
 class LoansPredictionView(APIView):
     permission_classes = [MockedTokenPermission]
 
+    def get(self, request):
+        return Response({
+            "message": "Hello, world!",
+        })
+
+
+class LoansPredictionView(APIView):
+    permission_classes = [MockedTokenPermission]
+
     @swagger_auto_schema(
         operation_summary="Predict the loan amount",
         operation_description="Predict the loan amount for a given customer (our only customer for now). "
