@@ -11,4 +11,12 @@ class LoansPredictionView(APIView):
         return Response({
             "message": "Hello, world!"
         })
+    
+
+class MainBalanceManyAccounts(APIView):
+
+    def get(self, request):
+        return Response({
+            "message": "GetMainBalance"
+        })
 
