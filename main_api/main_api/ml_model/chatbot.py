@@ -11,28 +11,33 @@ class Chatbot:
         self.analyze_user_loan_classification_prompt = analyze_user_loan_classification_prompt_text
         self.column_descriptions = pd.read_excel('./variables_description.xlsx').to_dict('records')
 
+        self.retries = 0
+
+        self.MAX_RETRIES = 3
+
     def get_response(self,
                      prediction: int,
                      data: dict,
                      tree_rules: str):
-        response = self.client.chat.completions.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": self.analyze_user_loan_classification_prompt.format(
-                column_descriptions=self.column_descriptions,
-                prediction=prediction,
-                data=data,
-                tree_rules=tree_rules
-            )}],
-        )
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": self.analyze_user_loan_classification_prompt.format(
+                    column_descriptions=self.column_descriptions,
+                    prediction=prediction,
+                    data=data,
+                    tree_rules=tree_rules
+                )}],
+            )
 
-        print(response.choices[0].message.content)
+            return json.loads(response.choices[0].message.content)
 
-        return json.loads(response.choices[0].message.content)
-
-
-chatbot = Chatbot()
-response = chatbot.get_response(prediction=0,
-                                data={},
-                                tree_rules="")
-
-print(type(response))
+        except Exception as e:
+            self.retries += 1
+            if self.retries < self.MAX_RETRIES:
+                return self.get_response(prediction=prediction,
+                                         data=data,
+                                         tree_rules=tree_rules
+                                         )
+            else:
+                return {"error": f"Failed to get response from the chatbot. Error: {e}"}
