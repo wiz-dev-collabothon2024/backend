@@ -1,7 +1,15 @@
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .permissions import MockedTokenPermission
+
+
+class LoansPredictionView(APIView):
+    permission_classes = [MockedTokenPermission]
+
+    def get(self, request):
+        return Response({
+            "message": "Hello, world!",
+        })
 
 
 class LoansPredictionView(APIView):
@@ -18,12 +26,12 @@ class MainBalanceManyAccounts(APIView):
     ACCOUNT_NAME = "account"
     BALANCE_NAME = "balance"
 
-    @swagger_auto_schema(
-        operation_description="Get bank account names and balances. Exactly 7 accounts.",
-        responses={
-            200: "OK",
-        }
-    )
+    # @swagger_auto_schema(
+    #     operation_description="Get bank account names and balances. Exactly 7 accounts.",
+    #     responses={
+    #         200: "OK",
+    #     }
+    # )
     def get(self, request):
         response_data = [
             {self.ACCOUNT_NAME + "1": "First account", self.BALANCE_NAME + "1": 5_836_482},
@@ -35,4 +43,3 @@ class MainBalanceManyAccounts(APIView):
             {self.ACCOUNT_NAME + "7": "Seventh account", self.BALANCE_NAME + "7": 55_957_001},
         ]
         return Response(response_data)
-
