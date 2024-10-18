@@ -91,5 +91,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SWAGGER_SETTINGS = {
-    'DEFAULT_INFO': 'users.swagger_info.swagger_info'
+    'DEFAULT_INFO': 'api.swagger_info.swagger_info',
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
 }
