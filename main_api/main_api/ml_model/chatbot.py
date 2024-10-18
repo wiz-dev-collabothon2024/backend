@@ -1,6 +1,7 @@
 from g4f.client import Client
 from main_api.main_api.ml_model.prompts.analyze_user_loan_classification_prompt_text import analyze_user_loan_classification_prompt_text
 import pandas as pd
+import json
 
 
 class Chatbot:
@@ -24,4 +25,14 @@ class Chatbot:
             )}],
         )
 
-        return response
+        print(response.choices[0].message.content)
+
+        return json.loads(response.choices[0].message.content)
+
+
+chatbot = Chatbot()
+response = chatbot.get_response(prediction=0,
+                                data={},
+                                tree_rules="")
+
+print(type(response))

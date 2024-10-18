@@ -15,13 +15,15 @@ class RandomForestClassifier():
 
     def predict(self,
                 id: int = 0
-                ) -> float:
+                ):
 
         pred = self.clf.predict(
             np.array(self.data.iloc[id]).reshape(1, -1)
         )
 
-        return pred
+        data = self.data.iloc[id].to_dict('records')
+
+        return pred, data
 
     def get_tree_rules(self):
         return tree.export_text(self.clf.estimators_[0],
