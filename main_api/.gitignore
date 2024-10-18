@@ -448,4 +448,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+/random_forest_classifier.joblib
+
 # End of https://www.toptal.com/developers/gitignore/api/linux,windows,django,python,virtualenv,visualstudiocode,pycharm

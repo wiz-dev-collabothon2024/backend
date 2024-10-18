@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .permissions import MockedTokenPermission
 from drf_yasg import openapi
+from main_api.main_api.ml_model.chatbot import Chatbot
+from main_api.main_api.ml_model.random_forest_classifier import RandomForestClassifier
 
 
 class LoansPredictionView(APIView):
@@ -15,8 +17,21 @@ class LoansPredictionView(APIView):
         responses={200: "The predicted loan amount"}
     )
     def get(self, request):
+
+        clf = RandomForestClassifier()
+
+        prediction, data = clf.predict()
+
+        tree_rules = clf.get_tree_rules()
+
+        chatbot = Chatbot()
+
+        response = chatbot.get_response(prediction=prediction,
+                                        data=data,
+                                        tree_rules=tree_rules)
+
         return Response({
-            "message": "Hello, world!",
+            "message": response,
         })
 
 
