@@ -28,7 +28,8 @@ Your answer will be used to provide feedback to the applicant on why their loan 
 2. Make sure not to use any markdown or special characters in the response.
 3. The detailed answer should be written in a clear and detailed manner.
 4. Make sure to not refer to the classifier model or the dataset in your response.
-        
+5. Make sure not to use any markdown symbols, use only JSON-compatible characters. Do not use symbols like  ```, \\n etc. 
+
 ### Dataset Column Descriptions:
 {column_descriptions}
 
