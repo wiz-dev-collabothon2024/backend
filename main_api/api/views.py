@@ -3,10 +3,19 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .permissions import MockedTokenPermission
 from drf_yasg import openapi
-from main_api.main_api.ml_model.chatbot import Chatbot
-from main_api.main_api.ml_model.random_forest_classifier import RandomForestClassifier
+from ml_model.chatbot import Chatbot
+from ml_model.random_forest_classifier import RandomForestClassifier
 
 
+class LoansPredictionView(APIView):
+    permission_classes = [MockedTokenPermission]
+
+    @swagger_auto_schema(
+        operation_summary="Predict the loan amount",
+        operation_description="Predict the loan amount for a given customer (our only customer for now). "
+                              "Pass Authorization header with a Bearer token.",
+        responses={200: "The predicted loan amount"}
+    )
     def get(self, request):
         clf = RandomForestClassifier()
 
