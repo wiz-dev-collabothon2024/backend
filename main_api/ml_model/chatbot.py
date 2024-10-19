@@ -1,5 +1,5 @@
 from g4f.client import Client
-from main_api.main_api.ml_model.prompts.analyze_user_loan_classification_prompt_text import analyze_user_loan_classification_prompt_text
+from ml_model.prompts.analyze_user_loan_classification_prompt_text import analyze_user_loan_classification_prompt_text
 import pandas as pd
 import json
 

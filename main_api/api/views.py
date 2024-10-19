@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .permissions import MockedTokenPermission
 from drf_yasg import openapi
-from main_api.main_api.ml_model.chatbot import Chatbot
-from main_api.main_api.ml_model.random_forest_classifier import RandomForestClassifier
+from ml_model.chatbot import Chatbot
+from ml_model.random_forest_classifier import RandomForestClassifier
 
 
 class LoansPredictionView(APIView):
