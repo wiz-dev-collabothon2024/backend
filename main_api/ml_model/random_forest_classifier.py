@@ -18,11 +18,15 @@ class RandomForestClassifier():
                 id: int = 0
                 ):
 
+        print('getting the random forest classifier prediction')
+
         pred = self.clf.predict(
             np.array(self.data.iloc[id]).reshape(1, -1)
         )
 
-        data = self.data.iloc[id].to_dict('records')
+        print(pred)
+
+        data = self.data.iloc[id]
 
         return pred, data
 
