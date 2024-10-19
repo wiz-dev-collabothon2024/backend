@@ -1,7 +1,7 @@
-version: '3'
+version: '3.8'
 
 services:
-  web:
+  backend:
     build: .
     command: bash -c "./init.sh"
     container_name: collabothon-api
@@ -9,3 +9,21 @@ services:
       - .:/api
     ports:
       - "8000:8000"
+
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../../frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+
+networks:
+  default:
+    name: app-network
