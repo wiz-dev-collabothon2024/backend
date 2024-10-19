@@ -6,7 +6,6 @@ from drf_yasg import openapi
 from ml_model.chatbot import Chatbot
 from ml_model.random_forest_classifier import RandomForestClassifier
 
-
 class LoansPredictionView(APIView):
     permission_classes = [MockedTokenPermission]
 
@@ -77,3 +76,5 @@ class MainBalanceManyAccounts(APIView):
             {self.ACCOUNT_NAME + "7": "Seventh account", self.BALANCE_NAME + "7": 55_957_001},
         ]
         return Response(response_data)
+
+

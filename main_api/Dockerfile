@@ -1,16 +1,16 @@
-FROM python:3.10.6-alpine3.16
+# Use Python 3.10 on Bullseye
+FROM python:3.10-bullseye
 
-RUN apk update && apk add --no-cache bash
-
-# Install system dependencies
-RUN apk add --no-cache build-base libffi-dev openssl-dev
+# Update and install required packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential libffi-dev libssl-dev
 
 # Create and activate a virtual environment
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
 # Set environment variables
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 # Set working directory
 WORKDIR /app
@@ -22,5 +22,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . /app/
 
-# Give execute permissions to the init.sh file
+# Give execute permissions to the init.sh file (if present)
 RUN chmod +x init.sh
+
+# Start your application (this could be your custom command or entry point)
+# CMD ["./init.sh"]  # Uncomment if you have an init.sh script to run
+
