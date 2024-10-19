@@ -11,7 +11,7 @@ class RandomForestClassifier():
                  random_state: int =1
                  ):
         self.clf = joblib.load("./random_forest_classifier_interpretable_130.joblib")
-        self.data = pd.read_csv('./X_csv.csv').drop(columns=["Unnamed: 0"])
+        self.data = pd.read_csv('X_csv.csv').drop(columns=["Unnamed: 0"])
 
     def predict(self,
                 id: int = 0
