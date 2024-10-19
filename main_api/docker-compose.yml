@@ -2,16 +2,13 @@ version: '3.8'
 
 services:
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
+    command: bash -c "./init.sh"
+    container_name: collabothon-api
+    volumes:
+      - .:/api
     ports:
       - "8000:8000"
-    environment:
-      - PYTHONUNBUFFERED=1
-    volumes:
-      - .:/app
-    # Add any other backend-specific configurations here
 
   frontend:
     build:
@@ -23,7 +20,7 @@ services:
       - ../../frontend:/app
       - /app/node_modules
     environment:
-      - VITE_API_URL=http://backend:8000
+      - VITE_API_URL=http://localhost:8000
     depends_on:
       - backend
 

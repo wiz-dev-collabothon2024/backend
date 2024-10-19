@@ -24,7 +24,3 @@ COPY . /app/
 
 # Give execute permissions to the init.sh file (if present)
 RUN chmod +x init.sh
-
-# Start your application (this could be your custom command or entry point)
-# CMD ["./init.sh"]  # Uncomment if you have an init.sh script to run
-
