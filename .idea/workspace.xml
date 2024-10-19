@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d90141eb-928a-47bc-948e-35dc3fa8e874" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/main_api/ml_model/chatbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_api/ml_model/chatbot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_api/ml_model/prompts/analyze_user_loan_classification_prompt_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_api/ml_model/prompts/analyze_user_loan_classification_prompt_text.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_api/ml_model/random_forest_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_api/ml_model/random_forest_classifier.py" afterDir="false" />
-    </list>
+    <list default="true" id="d90141eb-928a-47bc-948e-35dc3fa8e874" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
