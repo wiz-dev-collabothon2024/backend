@@ -32,6 +32,7 @@ Your answer will be used to provide feedback to the applicant on why their loan 
 6. Do not refer to the specific threshold values used in the model.
 7. Do not refer to the random forest/decision tree model.
 8. Make sure not to use any markdown symbols, use only JSON-compatible characters. Do not use symbols like  ```, \\n etc. 
+9. Make sure not to refer to the Var1, Var2, etc. columns in the dataset, refer to their descriptions/meanings/aliases instead.
 
 ### Dataset Column Descriptions:
 {column_descriptions}
