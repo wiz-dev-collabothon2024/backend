@@ -2,7 +2,7 @@ import pandas as pd
 import joblib
 import numpy as np
 from sklearn import tree
-
+import os
 
 class RandomForestClassifier():
     def __init__(self,
@@ -10,8 +10,9 @@ class RandomForestClassifier():
                  max_depth: int =None,
                  random_state: int =1
                  ):
-        self.clf = joblib.load("./random_forest_classifier_interpretable_130.joblib")
-        self.data = pd.read_csv('X_csv.csv').drop(columns=["Unnamed: 0"])
+        print(f"Current directory: {os.getcwd()}")
+        self.clf = joblib.load("./ml_model/random_forest_classifier_interpretable_152.joblib")
+        self.data = pd.read_csv('./ml_model/X_csv.csv').drop(columns=["Unnamed: 0"])
 
     def predict(self,
                 id: int = 0

@@ -17,6 +17,7 @@ class LoansPredictionView(APIView):
         responses={200: "The predicted loan amount"}
     )
     def get(self, request):
+
         clf = RandomForestClassifier()
 
         prediction, data = clf.predict()
@@ -28,6 +29,7 @@ class LoansPredictionView(APIView):
         response = chatbot.get_response(prediction=prediction,
                                         data=data,
                                         tree_rules=tree_rules)
+
         return Response({
             "message": response,
         })
